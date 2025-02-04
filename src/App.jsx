@@ -13,8 +13,6 @@ function App() {
   const [uurl, setUrl] = useState("");
   const [uabout, setAbout] = useState("");
 
-  //  const [] = useState();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(
@@ -26,36 +24,36 @@ function App() {
       uresume,
       selectoption,
       uurl,
-      uabout,
-      alert("form submitted successfully"),
-      resetForm()
+      uabout
     );
+    alert("You have registered successfully!"); 
+    resetForm();
   };
 
-  const resetForm = (e) => {
+  const resetForm = () => {
     setFirstname("");
     setLastname("");
     setEmail("");
     setMobile(0);
     setGender("male");
     setResume([]);
+    setSelectedoption("");
     setUrl("");
     setAbout("");
   };
+
   return (
     <div className="App">
-      <h1>Form in React JS</h1>
+
+      <h2>Registration Form</h2>
       <fieldset>
         <form onSubmit={handleSubmit}>
           <label>First Name</label>
           <input
             type="text"
             name="firstname"
-            id="firstname"
             value={ufirstname}
-            onChange={(e) => {
-              setFirstname(e.target.value);
-            }}
+            onChange={(e) => setFirstname(e.target.value)}
             placeholder="First Name"
             required
           />
@@ -63,35 +61,26 @@ function App() {
           <input
             type="text"
             name="lastname"
-            id="lastname"
             value={ulastname}
-            onChange={(e) => {
-              setLastname(e.target.value);
-            }}
+            onChange={(e) => setLastname(e.target.value)}
             placeholder="Enter Last Name"
             required
           />
           <label>Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
-            id="email"
             value={uemail}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Your Email"
             required
           />
           <label>Contact</label>
           <input
-            type="text"
+            type="tel"
             name="contact"
-            id="mobile"
             value={umobile}
-            onChange={(e) => {
-              setMobile(e.target.value);
-            }}
+            onChange={(e) => setMobile(e.target.value)}
             placeholder="Enter Contact"
             required
           />
@@ -99,57 +88,42 @@ function App() {
           <input
             type="radio"
             name="gender"
-            id="male"
             value="male"
             checked={ugender === "male"}
-            onChange={(e) => {
-              setGender(e.target.value);
-            }}
+            onChange={(e) => setGender(e.target.value)}
           />
           Male
           <input
             type="radio"
             name="gender"
-            id="female"
             value="female"
             checked={ugender === "female"}
-            onChange={(e) => {
-              setGender(e.target.value);
-            }}
+            onChange={(e) => setGender(e.target.value)}
           />
           Female
           <input
             type="radio"
             name="gender"
-            id="other"
             value="other"
             checked={ugender === "other"}
-            onChange={(e) => {
-              setGender(e.target.value);
-            }}
+            onChange={(e) => setGender(e.target.value)}
           />
           Other
           <label>Upload Resume</label>
           <input
             type="file"
             name="file"
-            id="file"
-            onChange={(e) => {
-              setResume(e.target.files[0]);
-            }}
-            placeholder="Drop Your Resume"
+            onChange={(e) => setResume(e.target.files[0])}
             required
           />
           <label>Choose Course</label>
           <select
-            name="selct"
-            id="select"
+            name="select"
             value={selectoption}
-            onChange={(e) => {
-              setSelectedoption(e.target.value);
-            }}
+            onChange={(e) => setSelectedoption(e.target.value)}
+            required
           >
-            <option value="" disabled defaultValue={selectoption === ""}>
+            <option value="" disabled>
               Select Your Course
             </option>
             <optgroup label="Beginners">
@@ -168,25 +142,18 @@ function App() {
           <input
             type="url"
             name="url"
-            id="url"
             value={uurl}
-            onChange={(e) => {
-              setUrl(e.target.value);
-            }}
+            onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter LinkedIn Url"
             required
           />
           <label>About Yourself</label>
           <textarea
-            type="text"
+            name="about"
             cols="30"
             rows="10"
-            name="about"
-            id="about"
             value={uabout}
-            onChange={(e) => {
-              setAbout(e.target.value);
-            }}
+            onChange={(e) => setAbout(e.target.value)}
             placeholder="Enter about Yourself"
             required
           />
